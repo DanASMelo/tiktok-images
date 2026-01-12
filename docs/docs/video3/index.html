@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      /* Container que força proporção 9:16 */
+      .wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        aspect-ratio: 9 / 16;
+        background: transparent;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* NÃO corta o vídeo */
+        display: block;
+        background: transparent;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <video autoplay muted loop playsinline>
+        <source
+          src="Sam Morris_7570695050091302166-no-watermark.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </body>
+</html>
