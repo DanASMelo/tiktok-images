@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
       html, body {
         margin: 0;
@@ -12,18 +13,25 @@
         overflow: hidden;
       }
 
+      /* Centraliza o card */
       .wrapper {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: transparent;
+      }
 
+      /* O CARD (é aqui que o arredondado existe) */
+      .card {
         width: 100%;
         max-width: 420px;
         aspect-ratio: 1 / 1;
 
         border-radius: 28px;
-        overflow: hidden;
+        overflow: hidden; /* ESSENCIAL */
+
+        background: transparent;
       }
 
       video {
@@ -38,23 +46,42 @@
 
   <body>
     <div class="wrapper">
-      <video
-        id="vid"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-      >
-        <source src="video.mp4" type="video/mp4" />
-      </video>
+      <div class="card">
+        <video
+          id="vid"
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+        >
+          <source src="gif3.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
 
     <script>
       const v = document.getElementById("vid");
-      v.muted = true;
-      v.play().catch(() => {});
+
+      async function playVideo() {
+        try {
+          v.muted = true;
+          v.autoplay = true;
+          await v.play();
+        } catch (e) {
+          // retry — importante em iframe
+          setTimeout(() => {
+            v.play().catch(() => {});
+          }, 1000);
+        }
+      }
+
+      v.addEventListener("canplay", playVideo);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) playVideo();
+      });
+
+      playVideo();
     </script>
   </body>
 </html>
