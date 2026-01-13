@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      html,
-      body {
+      html, body {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -14,21 +13,38 @@
         overflow: hidden;
       }
 
+      /* Centraliza e define o tamanho do "card" */
       .wrapper {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        height: 100%;
-        aspect-ratio: 9 / 16;
+
+        /* tamanho do card (ajuste se quiser) */
+        width: 100%;
+        max-width: 420px;
+
+        /* formato quadrado */
+        aspect-ratio: 1 / 1;
+
+        /* arredondado bonito */
+        border-radius: 28px;
+
+        /* ESSENCIAL: corta o vídeo pelos cantos arredondados */
+        overflow: hidden;
+
         background: transparent;
       }
 
-      img {
+      video {
         width: 100%;
         height: 100%;
-        object-fit: contain;
         display: block;
+
+        /* preenche o quadrado com crop (igual thumb) */
+        object-fit: cover;
+
+        /* evita “flash” de fundo */
         background: transparent;
       }
     </style>
@@ -36,7 +52,9 @@
 
   <body>
     <div class="wrapper">
-      <img src="gif1.gif" alt="animation" />
+      <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4" />
+      </video>
     </div>
   </body>
 </html>
