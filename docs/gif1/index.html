@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,45 +6,31 @@
     <style>
       html, body {
         margin: 0;
-        padding: 0;
         width: 100%;
         height: 100%;
         background: transparent;
         overflow: hidden;
       }
 
-      /* Centraliza e define o tamanho do "card" */
       .wrapper {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
 
-        /* tamanho do card (ajuste se quiser) */
         width: 100%;
         max-width: 420px;
-
-        /* formato quadrado */
         aspect-ratio: 1 / 1;
 
-        /* arredondado bonito */
         border-radius: 28px;
-
-        /* ESSENCIAL: corta o vídeo pelos cantos arredondados */
         overflow: hidden;
-
-        background: transparent;
       }
 
       video {
         width: 100%;
         height: 100%;
-        display: block;
-
-        /* preenche o quadrado com crop (igual thumb) */
         object-fit: cover;
-
-        /* evita “flash” de fundo */
+        display: block;
         background: transparent;
       }
     </style>
@@ -52,9 +38,23 @@
 
   <body>
     <div class="wrapper">
-      <video autoplay muted loop playsinline>
+      <video
+        id="vid"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+      >
         <source src="video.mp4" type="video/mp4" />
       </video>
     </div>
+
+    <script>
+      const v = document.getElementById("vid");
+      v.muted = true;
+      v.play().catch(() => {});
+    </script>
   </body>
 </html>
