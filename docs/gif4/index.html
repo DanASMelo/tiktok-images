@@ -5,83 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
-      html, body {
+      html,
+      body {
         margin: 0;
+        padding: 0;
         width: 100%;
         height: 100%;
-        background: transparent;
+        background: #fff3cc; /* FUNDO DEFINIDO */
         overflow: hidden;
       }
 
-      /* Centraliza o card */
       .wrapper {
         position: absolute;
-        inset: 0;
-        display: grid;
-        place-items: center;
-        background: transparent;
-      }
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
-      /* O CARD (é aqui que o arredondado existe) */
-      .card {
-        width: 100%;
-        max-width: 420px;
-        aspect-ratio: 1 / 1;
+        height: 100%;
+        aspect-ratio: 9 / 16;
 
+        background: #fff3cc; /* FUNDO IGUAL AO HTML */
         border-radius: 28px;
-        overflow: hidden; /* ESSENCIAL */
-
-        background: transparent;
+        overflow: hidden; /* CORTA QUALQUER BORDA PRETA */
       }
 
       video {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: cover; /* REMOVE A BORDA PRETA */
         display: block;
-        background: transparent;
+        background: #fff3cc;
       }
     </style>
   </head>
 
   <body>
     <div class="wrapper">
-      <div class="card">
-        <video
-          id="vid"
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-        >
-          <source src="gif4.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="gif4.mp4" type="video/mp4" />
+      </video>
     </div>
-
-    <script>
-      const v = document.getElementById("vid");
-
-      async function playVideo() {
-        try {
-          v.muted = true;
-          v.autoplay = true;
-          await v.play();
-        } catch (e) {
-          // retry — importante em iframe
-          setTimeout(() => {
-            v.play().catch(() => {});
-          }, 1000);
-        }
-      }
-
-      v.addEventListener("canplay", playVideo);
-      document.addEventListener("visibilitychange", () => {
-        if (!document.hidden) playVideo();
-      });
-
-      playVideo();
-    </script>
   </body>
 </html>
