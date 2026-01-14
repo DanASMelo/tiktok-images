@@ -11,7 +11,7 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        background: #fff3cc; /* FUNDO DEFINIDO */
+        background: #fff3cc;
         overflow: hidden;
       }
 
@@ -24,15 +24,16 @@
         height: 100%;
         aspect-ratio: 9 / 16;
 
-        background: #fff3cc; /* FUNDO IGUAL AO HTML */
+        background: #fff3cc;
         border-radius: 28px;
-        overflow: hidden; /* CORTA QUALQUER BORDA PRETA */
+        overflow: hidden;
       }
 
       video {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* REMOVE A BORDA PRETA */
+        object-fit: cover;
+        object-position: 30% center; /* 👈 AJUSTE DO FOCO */
         display: block;
         background: #fff3cc;
       }
@@ -41,9 +42,7 @@
 
   <body>
     <div class="wrapper">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="gif4.mp4" type="video/mp4" />
-      </video>
+      <video autoplay muted loop playsinline preload="auto" src="gif4.mp4"></video>
     </div>
   </body>
 </html>
