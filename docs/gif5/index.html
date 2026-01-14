@@ -11,11 +11,10 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        background: #fff3cc; /* FUNDO */
+        background: #fff3cc;
         overflow: hidden;
       }
 
-      /* Container 9:16 */
       .wrapper {
         position: absolute;
         top: 50%;
@@ -26,10 +25,11 @@
         aspect-ratio: 9 / 16;
 
         background: #fff3cc;
-        border-radius: 28px;
+
+        border-radius: 48px; /* <<< MAIS ARREDONDADO */
         overflow: hidden;
 
-        padding: 12px; /* <<< DIMINUI O VÍDEO */
+        padding: 14px; /* espaço interno elegante */
         box-sizing: border-box;
       }
 
@@ -39,7 +39,8 @@
         object-fit: contain;
         display: block;
         background: transparent;
-        border-radius: 20px; /* opcional, suaviza ainda mais */
+
+        border-radius: 36px; /* acompanha o container */
       }
     </style>
   </head>
